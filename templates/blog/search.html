@@ -1,0 +1,31 @@
+{% extends "base/base.html" %} {% block title %} Welcome to Blog {% endblock %} {%load static%}{% block content %} {%include "base/nav-bar.html"%}
+<div class="bgpic"><img src="{% static 'Thanh-pho.jpg' %}" /></div>
+<div class="col">
+    <div class="row" id="row-titlecard">
+        <div class="titlecard">
+            <h1 style="font-size:400%">THÀNH PHỐ THÁI BÌNH</h1>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-8">
+            <div class="container">
+                <div class="search-result-dialog">
+                    <h3>Tìm được {{total_results}} kết quả</h3>
+                    <h4>Từ khóa</h4>
+                    <p>{{q}}</p>
+                    <h4>Tags</h4>
+                    <p>
+                        {%for tag in c%} {{tag}} | {%endfor%}</p>
+                </div>
+                {% include "blog/list.html" %}
+            </div>
+        </div>
+        <div class="col-4">
+            {% include "blog/searchbox.html" %}
+        </div>
+    </div>
+    {%include "base/footer.html"%}
+</div>
+
+
+{% endblock %}

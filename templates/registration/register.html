@@ -1,0 +1,34 @@
+{% extends "base/base.html" %} {% block title %} Register {% endblock %}{%load static%} {%block content%}
+<div class="row" style="height: 100%; width:100%; overflow:hidden;">
+    <div class="col-6" style="overflow: hidden;">
+        <a class="btn btn-outline-dark" style="position: absolute; top: 20px; left: 20px" href="/">
+            <i class="fa-solid fa-house-chimney" style="margin-right: 5px"></i>HOME</a>
+        <div class="register-container">
+            <form class="account-form p-4 rounded col-lg-10 mx-auto" action="." method="post">
+                {% csrf_token %}
+                <p class="h4 mb-2 font-weight-bold">Tạo tài khoản</p>
+                <label class="small font-weight-bold">{{ form.username.label }}</label> {% if form.username.errors %}
+                <span class="alert">
+                    {{ form.username.errors|striptags }}
+                </span> {% endif %}{{ form.username }}
+                <label class="small font-weight-bold">{{ form.email.label}}</label>{% if form.email.errors %}
+                <span class="alert">
+                    {{ form.email.errors|striptags }}
+                </span> {% endif %} {{ form.email }}
+                <label class="small font-weight-bold">{{ form.password.label}}</label>{{ form.password }}
+                <label class="small font-weight-bold">
+                    {{ form.password2.label}}
+                </label> {% if form.password2.errors %}
+                <span class="alert">
+                    {{ form.password2.errors|striptags }}
+                </span> {% endif %}{{ form.password2 }}
+                <button class="btn btn-dark btn-block py-2 mb-4 mt-5 font-weight-bold login-button" type="submit" href="/">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="sidepic"><img src="{% static 'Chua-keo.jpg' %}" /></div>
+    </div>
+</div>
+
+{%endblock%}
